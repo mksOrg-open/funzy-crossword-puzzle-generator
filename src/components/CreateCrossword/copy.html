@@ -1,0 +1,2356 @@
+
+
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Free, Online Crossword Puzzle Maker - Crossword Labs</title>
+        
+
+        <style>
+            /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: normal;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* brown: 38341c
+red ab0d0d
+*/
+* {box-sizing:border-box}
+
+body {
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:14px;
+}
+
+xmp {
+    white-space: pre-line;
+    word-break: break-all;
+}
+
+button, .button-like {
+    font-size:16px;
+    border:1px solid #999;
+    background: linear-gradient(0deg, #ccc 0%, #fff 100%);
+    border-radius:none;
+    padding:5px;
+}
+
+
+button:hover, .button-like:hover {
+    background: linear-gradient(0deg, #ddd 0%, #fff 100%);
+}
+
+button.submit, .button-like.submit {
+    background: linear-gradient(0deg, #ffcf33 0%, #fff3cc 100%);
+    border:1px solid #ffc301;
+}
+
+button.submit:hover, .button-like.submit:hover {
+    background: linear-gradient(0deg, #ffdb66 0%, #fff3cc 100%);
+}
+
+button.depressed,
+.button-like.depressed,
+button:active,
+.button-like:active,
+button.depressed:hover,
+.button-like.depressed:hover {
+    background: linear-gradient(0deg, #fff 0%, #ccc 100%);
+}
+
+a.button-like:link,
+a.button-like:visited,
+a.button-like:hover {
+    color:black;
+    text-decoration:none;
+}
+
+h2 {
+    font-size:30px;
+    font-weight:normal;
+    margin-bottom:10px;
+    line-height:1.3;
+}
+
+h3 {
+    font-size:20px;
+    font-weight:normal;
+    margin-bottom:10px;
+    line-height:1.3;
+}
+
+input[type="text"], textarea, input[type="password"], input[type="email"] {
+    font-size:16px;
+    padding:5px;
+    width:100%;
+    display:block;
+}
+
+.form-row label {
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:3px;
+    display:block;
+}
+
+.form-help {
+    margin-top:0;
+    font-size:12px;
+}
+
+button, input[type="submit"], select {
+    font-size:16px;
+}
+
+select {
+    padding:5px;
+}
+
+#wedge h3 {
+    color:#fff;
+}
+
+
+h4 {
+    color:#FFFFFF;
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+h5 {
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+em {
+    font-style:italic;
+}
+
+a:link, a:visited, a:hover, #faqs summary {
+    color:#009adb;
+}
+
+a:visited {
+    color:#b900db;
+}
+
+#faqs {
+    margin-bottom:100px;
+}
+
+#faqs summary {
+    cursor:pointer;
+    text-decoration:underline;
+    margin-top:15px;
+    font-size:16px;
+    margin-bottom:10px;
+}
+
+a:hover {
+    text-decoration:none;
+}
+
+small {
+    font-size:12px;
+}
+
+strong {
+    font-weight:bold;
+}
+
+p {
+    font-size:14px;
+    line-height:normal;
+    margin-bottom:10px;
+}
+
+ol, ul {
+    line-height:normal;
+}
+
+.readable h4 {
+    color:black;
+}
+
+.readable ol {
+    list-style-type:decimal;
+    margin-left:20px;
+    margin-bottom:20px;
+}
+
+ul {
+    list-style-type:circle;
+    margin-left:20px;
+    margin-bottom:20px;
+}
+
+.hide {
+    display:none !important;
+}
+
+.clear {
+    clear:both;
+}
+
+.error {
+    color:#ab0d0d;
+    font-weight:bold;
+}
+
+.success {
+    color:#008800;
+    font-weight:bold;
+}
+
+p.error { 
+    margin-bottom:10px;
+}
+
+.button {
+    text-align:center;
+}
+
+.member-check {
+    color:#009900;
+    font-weight:bold;
+}
+
+.button input, .button a:link, .button a:visited, .button a:hover, .button button {
+    border: 1px solid #ab0d0d;
+    font-weight:normal;
+    font-size:18px;
+    color:#FFFFFF;
+    text-align:center;
+    border:none;
+    padding:5px;
+    border-radius:5px;
+    text-decoration:none;
+}
+
+.modal-close, .button input, .button a:link, .button a:visited, .button a:hover, .button button, #view-buttons form {
+    background:#ab0d0d;
+    background: linear-gradient(to bottom, hsla(0, 86%, 48%, 1) 0%,#ab0d0d 100%);
+}
+
+#view-buttons {
+    display:flex;
+    justify-content:flex-end;
+}
+
+#view-buttons > * {
+    display:block;
+    margin-left:3px;
+    margin-right:3px;
+}
+
+#view-buttons > *:first-child {
+    margin-left:0;
+}
+
+#view-buttons > *:last-child {
+    margin-right:0;
+}
+
+#view-buttons form {
+    /*border:3px solid #ab0d0d;*/
+    /*background-color:#ab0d0d;*/
+    border-radius:5px;
+    display:flex;
+    align-items:center;
+}
+
+#print-select {
+    margin:3px 0px 3px 3px;
+    display:block;
+    background-color:white;
+    color:black;
+    font-size:18px;
+    border:none;
+    padding:5px;
+    border-radius:5px;
+}
+
+#view-buttons form label {
+    border-radius:0;
+    display:block;
+}
+
+#view-buttons a {
+    display:flex;
+    align-items:center;
+}
+
+
+#tiny-options {
+    font-size:12px;
+    margin-top:10px;
+    line-height:1.5;
+}
+
+#tiny-options img {
+    width:18px;
+}
+
+#tiny-options a:link, #tiny-options a:visited, #tiny-options a:hover {
+    background:none;
+    color:#009adb;
+    text-decoration:underline;
+    font-size:12px;
+    padding:0;
+}
+
+#tiny-options a:hover {
+    text-decoration:none;
+}
+
+#header {
+    margin-left:25px;
+}
+
+#nav {
+    display:flex;
+    margin-top:10px;
+    margin-left:0;
+}
+
+/*
+#nav li {
+    padding:0px;
+    padding-left:0;
+    margin-right:30px;
+}*/
+
+#nav a {
+    margin-left:10px;
+    margin-right:10px;
+}
+
+#nav a:first-child {
+    margin-left:0;
+}
+
+#nav a:last-child {
+    margin-right:0;
+}
+
+#nav a:link, #nav a:visited, #nav a:hover {
+    font-weight:bold;
+    font-size:14px;
+    color:#009adb;
+    display:block;
+    padding-bottom:10px;
+}
+
+#nav a:hover {
+    text-decoration:none;
+}
+
+#nav a.active:link, #nav a.active:visited, #nav a.active:hover {
+    color:#38341c;
+    text-decoration:none;
+    background:url('/static/1658649439/img/nav-arrow.gif?6808f67e18d0');
+    background-repeat:no-repeat;
+    background-position:center bottom;
+}
+
+#wrapper {
+    max-width:900px;
+    margin:auto;
+    margin-top:20px;
+}
+
+#stage-1, #stage-2 {
+    clear:both;
+}
+
+#build-crossword {
+    background-color:#38341c;
+    flex:1;
+    max-width:100%;
+    padding:20px 25px;
+    color:#fff;
+}
+
+#build-crossword label {
+    color:#FFFFFF;
+    display:block;
+    font-size:18px;
+    margin-bottom:5px;
+    line-height:normal;
+}
+
+#build-crossword a:link, #build-crossword a:visited, #build-crossword a:hover {
+    color:#b2ba97;
+    text-decoration:underline;
+}
+
+#build-crossword a:hover {
+    color:#b2ba97;
+    text-decoration:none;
+}
+
+#build-crossword textarea {
+    width:100%;
+    height:400px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-family:"Courier New", Courier, monospace;
+}
+
+#build-crossword input {
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+
+#id_title {
+    margin-bottom:20px;
+    font-size:18px;
+    width:100%;
+    display:block;
+}
+
+#crossword-data {
+    margin-bottom:10px;
+}
+
+#wedge {
+    max-width:283px;
+    padding:40px 0 0px 10px;
+    background:url('/static/1658649439/img/wedge.svg?6808f67e18d0');
+    background-repeat:no-repeat;
+    margin-top:10px;
+    background-size:cover;
+    background-position:0 0;
+    background-color:#009adb;
+}
+
+#in-wedge {
+    padding-right:20px;
+    font-size:16px;
+    line-height:1.3;
+}
+
+#in-wedge h4 {
+    font-size:16px;
+    line-height:1.3;
+}
+
+#tagline {
+    margin-bottom:5px;
+}
+
+#password {
+    width:100%;
+}
+
+#wedge p {
+    font-size:16px;
+    color:#FFFFFF;
+    line-height:1.3;
+}
+
+#wedge li {
+    line-height:normal;
+    color:#fff;
+    line-height:1.3;
+    margin-bottom:3px;
+}
+
+
+#wedge a:link, #wedge a:visited, #wedge a:hover {
+    text-decoration:underline;
+    color:#FFFFFF;
+}
+
+#wedge a:hover {
+    text-decoration:none;
+}
+
+#little-crossword {
+    float:left;
+    width:68px;
+    height:81px;
+    display:block;
+    padding-right:10px;
+}
+
+#samples {
+    margin-left:5px;
+    margin-top:10px;
+}
+
+#samples ul {
+    list-style-type:none;
+}
+
+#samples ul li {
+    margin-bottom:3px;
+}
+
+#menu {
+    margin-left:5px;
+    margin-top:10px;
+    padding-bottom:20px;
+}
+
+#menu ul {
+    list-style-type:circle;
+    color:#fff;
+}
+
+#menu ul li {
+    font-size:14px;
+    margin-bottom:3px;
+}
+
+#stage-2 {
+    border-top:5px solid #38341c;
+    border-bottom:5px solid #38341c;
+    padding:20px 25px;
+}
+
+.stage-2 {
+    display:none;
+}
+
+
+#stage-2 h2  {
+    text-align:left;
+}
+
+#finish-up {
+    text-align:right;
+    float:right;
+}
+
+#finish-up2 {
+    float:right;
+    text-align:right;
+}
+
+pre {
+    background-color:#efefef;
+    overflow:auto;
+    font-family:monospace;
+    line-height:1.2;
+    padding:5px;
+    display:block;
+    margin-bottom:10px;
+}
+
+#fail p {
+    margin-top:10px;
+}
+
+ol#results {
+    list-style-type:decimal;
+    margin-left:25px;
+    margin-top:10px;
+}
+
+#results li {
+    margin-bottom:5px;
+    font-size:14px;
+}
+
+#results a:link, #results a:visited, #results a:hover {
+    font-weight:bold;
+
+}
+
+#search-box {
+    width:100%;
+    font-size:18px;
+}
+
+#search {
+    margin-top:10px;
+    margin-bottom:30px;
+}
+
+#supporter {
+    border-right:1px solid #38341c;
+}
+
+#freeloader ul {
+    margin-top:15px;    
+}
+
+#freeloader ul li {
+    margin-bottom:5px;
+}
+
+#supporter h2, #freeloader h2 {
+    font-size:18px;
+}
+
+#supporter h2 small {
+    color:#333;
+    font-style: italic;
+    font-size:14px;
+}
+
+#security {
+    float:right;
+    width:250px;
+}
+
+#payment-errors {
+    font-size:14px;
+    color:#ff0000;
+    padding-top:10px;
+}
+
+div#register {
+    margin:auto;
+    width:400px;
+}
+
+#settings {
+    width:400px;    
+}
+
+.errorlist {
+    color:#ff0000;
+    margin-left:0px;
+    list-style-type:none;
+    margin-bottom:0;
+    padding-bottom:0px;
+}
+
+.errorlist li {
+    margin-left:0;
+    margin-bottom:0;
+    padding-bottom:0px;
+}
+
+.form-row {
+    margin-bottom:10px;
+}
+
+.button-list {
+    display:flex;
+    align-items:center;
+}
+
+.button-list > * {
+    margin-right:20px;
+}
+/*
+#supporter input, #register input, #payment-form input, #settings input, #settings select {
+    display:block;
+    margin-bottom:10px;
+}*/
+
+#public-list {
+    border:5px solid #38341c;
+    margin:auto;
+    width:400px;
+    padding:10px;
+}
+
+#public-list ol {
+    margin-left:25px;
+    list-style-type:decimal;
+}
+
+#template-list {
+    margin-top:10px;    
+    margin-bottom:10px;    
+}
+
+#template-list thead th 
+{
+    font-size:16px;
+    font-weight:bold;
+    padding-left:10px;
+    padding-right:10px;
+    border-bottom:3px solid #38341c;
+    border-top:0px solid #38341c;
+    padding-top:4px;
+    padding-bottom:4px;
+}
+
+#template-list td 
+{
+    font-size:14px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:4px;
+    padding-bottom:4px;
+}
+
+#template-list td.counter
+{
+    font-size:10px;
+    font-weight:bold
+}
+
+#template-list tr.odd td {
+    background-color:#efefef;
+}
+
+#tooltip{
+    position:absolute;
+    border:1px solid #333;
+    background:#000;
+    padding:2px 5px;
+    color:#fff;
+    display:none;
+    max-width:300px;
+    font-size:12px;
+}
+
+.help {
+    color:#d630c1;
+    font-weight:bold;
+    font-size:12px;
+}
+
+.side-by-side {
+    display:flex;
+    flex-direction:row-reverse;
+    align-items:flex-start;
+}
+
+.side-by-side-normal {
+    display:flex;
+}
+
+.side-by-side-normal > div {
+    flex:1;
+    padding:0 20px;
+}
+
+.side-by-side-normal > div:first-child {
+    padding-left:0;
+}
+.side-by-side-normal > div:last-child {
+    padding-right:0;
+}
+
+.crossword-item {
+    display:flex;
+    margin-bottom:30px;
+}
+
+.crossword-item-center {
+    align-items:center;
+    /*border:1px solid #38341c;*/
+}
+
+.crossword-item-center .mini-crossword {
+    width:50px;
+    height:50px;
+}
+
+.account-display .mini-crossword {
+    width:50px;
+    height:50px;
+
+}
+
+.account-display .crossword-item {
+    margin-bottom:0;
+}
+
+.account-display {
+    padding:10px 5px;
+}
+
+.tag {
+    font-size:11px;
+    display:inline-block;
+    padding:3px;
+    color:#fff;
+    font-weight:bold;
+}
+
+.tag-public {
+    background-color:#009900;
+}
+
+.tag-private {
+    background-color:#ff0000;
+}
+
+.tag-secret {
+    background-color:#ff8800;
+}
+
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.sort-form {
+    display:inline;
+}
+
+.sort-form a {
+    text-decoration:none;
+}
+
+.sort-form a:visited {
+    color:#009adb;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.action-menu {
+    float:right;
+}
+
+.action-menu select {
+    max-width:100px;
+}
+
+.action-menu form {
+    display:inline-block;
+}
+
+.crossword-item-details {
+    flex:1;
+}
+
+.mini-crossword {
+    margin-right:10px;
+    width:100px;
+    height:100px;
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:100% 100%;
+}
+
+#edit, #refresh {
+    /*background-color:#38341c;*/
+    font-weight:bold;
+}
+
+/*
+.mini-crossword img {
+    max-width:100%;
+}*/
+
+.crossword-item-clue {
+    /*display:inline-block;*/
+    /*
+    padding-left:3px;
+    padding-right:3px;
+    margin:2px 3px;*/
+}
+
+.crossword-item-pair {
+    display:flex;
+}
+
+.account-display.odd {
+    background-color:#efefef;
+}
+
+.crossword-item-pair > div {
+    width:100%;
+    margin-right:10px;
+    margin-left:10px;
+}
+
+.crossword-item-pair > div:first-child {
+    margin-left:0px;
+}
+
+.crossword-item-pair > div:last-child {
+    margin-right:0px;
+}
+
+.crossword-item h3 {
+    margin-bottom:3px;
+    line-height:1.3;
+}
+
+.crossword-item-small {
+    margin-top:5px;
+    font-size:12px;
+    margin-bottom:0;
+}
+
+.crossword-item-clue-odd {
+}
+
+#search-box {
+    display:block;
+}
+
+.search-field {
+    display:flex;
+    align-items:stretch;
+    justify-content:stretch;
+}
+
+.search-field input {
+    outline:none;
+    border:none;
+}
+
+.search-field-box {
+    border:1px solid gray;
+    display:flex;
+    align-items:center;
+    flex:1;
+    padding-right:10px;
+}
+
+.search-field-box input {
+    flex:1;
+    display:block;
+}
+
+fieldset {
+    border-top: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top:20px;
+}
+
+legend {
+    box-sizing: border-box;
+    display: table;
+    max-width: 100%;
+    padding: 0;
+    white-space: normal;
+    font-size: 18px;
+    margin-left: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+    width:auto;
+}
+
+#order-total {
+    width:100%;
+    margin-top:10px;
+    font-size:14px;
+    line-height:18px;
+    border-collapse:collapse;
+}
+
+.card-error {
+    color:#ff0000;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.promise {
+    background-color: #fff587;
+    padding: 10px;
+    line-height:1.3;
+    color:#000;
+    /*margin-top:10px;*/
+}
+
+.radios label {
+    display:block;
+    font-weight:normal;
+}
+
+.radios ul {
+    margin-left:0;
+    list-style-type:none;
+}
+
+/**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+.StripeElement {
+    display:block;
+    font-size:20px;
+    width:100%;
+    border:1px solid #b8c3cc;
+    border-radius:3px;
+    padding:3px;
+    font-family: 'Cormorant Garamond', serif;
+    background-color:#fff;
+}
+
+.StripeElement--focus {
+}
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+#order-total tr td:last-child {
+    text-align:right;
+}
+
+#order-total tr td {
+    padding-bottom:5px;
+    padding-top:5px;
+}
+
+#order-total .total td {
+    border-top:3px solid black;
+}
+
+#privacy-settings > div {
+    display:flex;
+    margin-bottom:10px;
+    align-items:flex-start;
+}
+
+#privacy-settings label {
+    margin:0;
+    font-size:14px;
+    font-weight:bold;
+}
+
+#privacy-settings small {
+    font-size:14px;
+    font-weight:normal;
+}
+
+#preview-panel {
+    display:flex;
+    /*align-items:center;*/
+    margin-top:20px;
+    flex-direction:row;
+    color:white;
+}
+
+#preview-panel #id_password {
+    padding-right:50px;
+}
+
+#seed-left, #seed-right {
+    user-select:none;
+    cursor:pointer;
+}
+
+
+#preview-panel > div:first-child {
+    margin-right:10px;
+}
+
+#preview-panel > div:last-child {
+    margin-left:10px;
+}
+
+#preview-detail {
+    flex:1;
+    height:100%;
+    /*min-height:275px;*/
+    /*border:1px solid white;*/
+    /*overflow:hidden;*/
+    /*
+    background-color:white;
+    box-shadow: #d8d8d8 0 0 2px 0;*/
+}
+
+.crossword-frame-mini {
+    box-shadow: #685959 0 0 2px 0;
+    margin-right:20px;
+    align-self: flex-start;
+}
+
+.crossword-frame {
+    /*transform:scale(.25);*/
+    transform-origin:top left;
+    height:100%;
+    overflow:hidden;
+    padding: 50px;
+    background-color: white;
+}
+
+#preview-detail h3 {
+    color:white;
+    text-align:center;
+    margin-top:0;
+}
+
+#preview-header {
+    margin-bottom:0;
+}
+
+#preview-here, .preview-here {
+    position:absolute;
+    width:612px /*8.5in*/;
+    height:792px /*11in */;
+    /*color:#fff;*/
+    color:black;
+    /*border: 2px dashed white;*/
+    text-align:center;
+    /*
+    align-items: center;
+    justify-content: center;
+    display:flex;*/
+}
+
+.preview-here {
+    transform:scale(.27777);
+}
+
+#why {
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+#preview-here .message {
+    font-size: 72px;
+    font-weight: normal;
+    transform: rotate(45deg);
+    justify-content:center;
+    align-items:center;
+    display:flex;
+    height:100%;
+}
+
+#preview-here .message small {
+    cursor:pointer;
+}
+
+#preview-here.loading {
+    background-image: url('/static/1658649439/img/tail-spin.svg?6808f67e18d0');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px 50px;
+}
+
+#show {
+    opacity:0;
+    cursor:pointer;
+}
+
+#square, .square {
+    position:relative;
+    width:100%;
+    background-color:orange;
+    /*
+    background-color:black;*/
+    /*border:1px solid white;*/
+}
+
+#square:after, .square:after {
+    content: "";
+    display:block;
+    padding-bottom:129%;
+}
+
+.square {
+    width:170px;
+    height:220px;
+
+}
+
+
+/* payment stuff */
+
+.modal-wrapper {
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background-color:rgba(56,52,28,.9);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:100;
+}
+
+.modal {
+    background-color:#fff;
+    max-width:500px;
+    padding:10px;
+    /*border-radius:10px;*/
+    line-height:1.3;
+    max-height:100%;
+    overflow:auto;
+}
+
+.modal button {
+    margin:auto;
+    display:block;
+    padding:5px;
+}
+
+.modal #id_email {
+    padding:3px;
+}
+
+.modal .errorlist {
+    margin-top:5px;
+}
+
+.modal label {
+    font-size:16px;
+    display:block;
+    margin-top:20px;
+    font-weight:bold;
+}
+
+.modal input[type='text'] {
+    width:100%;
+    font-size:16px;
+}
+
+.modal p {
+    font-size:16px;
+}
+
+.modal li {
+    font-size:16px;
+    margin-bottom:3px;
+}
+
+p.modal-warning {
+    font-size:24px;
+    color:#38341c;
+    font-weight:bold;
+    text-align:center;
+    clear:both;
+}
+
+.modal-close {
+    float: right;
+    position: relative;
+    top: -10px;
+    right: -10px;
+    font-weight: bold;
+    font-size: 18px;
+    z-index: 2;
+    display: inline-block;
+    color: white;
+    cursor:pointer;
+    padding-left:5px;
+    padding-right:5px;
+}
+
+a.modal-close:link, a.modal-close:visited, a.modal-close:hover {
+    color:white;
+}
+
+#payment-form-update-button {
+    margin-top:20px;
+}
+
+.modal-inner {
+    /*display:flex;
+    justify-content:space-between;*/
+}
+
+.modal-inner > div {
+    /*width:45%;*/
+}
+
+.modal #order-total {
+    font-size:16px;
+}
+
+#card-errors {
+    padding-top:2px;
+    color:#ff0000;
+    font-size:16px;
+}
+/* end payment stuff */
+
+.share-options > div {
+    margin-bottom:20px;
+}
+
+.share-option-item {
+    display:flex;
+    align-items:flex-start;
+
+}
+
+.share-option-item > * {
+    display:block;
+    margin:0;
+}
+
+.share-option-item pre {
+    flex:1;
+}
+
+.share-option-item a {
+    margin-left:10px;
+    font-size:18px;
+}
+
+.payment-tabs {
+    align-items:center;
+    font-size:14px;
+}
+
+.payment-tabs > a {
+    display:inline-block;
+    margin:0 5px;
+    padding:5px;
+    background-color:#efefef;
+    cursor:pointer;
+    margin-bottom:10px;
+    text-decoration:none;
+    color:black;
+}
+
+.payment-tabs > a:hover {
+
+}
+
+
+.payment-tab {
+    display:none;
+}
+
+a.payment-tab-active {
+    background-color: #fff587;
+}
+
+h1 {
+    font-size:28px;
+}
+
+.interesting {
+    /*clip-path: polygon(-4% 3%, 100% -2%, 98% 104%, 3% 90%);*/
+    background-color: #38341c;
+    padding: 20px 25px;
+    font-size:16px;
+    background-color: #fff587;
+    line-height:1.3;
+}
+
+.interesting p {
+    font-size:16px;
+}
+
+.crossword-frame h1 {
+    font-size:36px;
+    margin-bottom:30px;
+}
+
+.crossword-frame h6 {
+    font-weight:bold;
+    text-transform: capitalize;
+    margin-bottom:10px;
+}
+
+.crossword-frame-clues {
+    display:flex;
+    justify-content:space-between;
+    margin-top:20px;
+}
+
+.crossword-frame-clues > div {
+    width:45%;
+}
+
+.crossword-frame-clues ol {
+    list-style-type:decimal;
+    margin-left:20px;
+    text-align:left;
+}
+
+
+@media (max-width:800px) {
+    .side-by-side, .side-by-side-normal {
+        flex-direction:column;
+    }
+
+    .side-by-side-normal > * {
+        margin-bottom:20px;
+    }
+
+    .side-by-side-normal > *:first-child,
+    .side-by-side-normal > *:last-child {
+        padding-left:0;
+        padding-right:0;
+    }
+
+    #header {
+        margin-left:0;
+        text-align:center;
+    }
+
+    #nav {
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    #nav a {
+        padding:15px;
+        font-size:18px !important;
+
+    }
+
+    #supporter {
+        border-right:none;
+
+    }
+
+    #build-crossword, #wedge {
+        max-width:100%;
+    }
+
+    #wedge {
+        background:none;
+        background-color: #009adb;
+        padding:10px;
+        margin:0px 0px 10px 0px;
+    }
+
+    .crossword-item-pair {
+        display:block;
+    }
+
+    .crossword-item-pair > div {
+        width:100%;
+        margin-left:0 !important;
+        margin-right:0 !important;
+    }
+
+    #nav a.active:link, #nav a.active:visited, #nav a.active:hover {
+        background:none;
+    }
+
+    #finish-up2 {
+        float:none;
+        text-align:center;
+    }
+
+    #view-buttons {
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    #view-buttons > * {
+        margin-bottom:10px;
+
+    }
+
+    #tiny-options {
+        margin-top:15px;
+        margin-bottom:15px;
+    }
+
+    #tiny-options a {
+        font-size:16px !important;
+    }
+
+    h2#title {
+        text-align:center;
+    }
+}
+
+@media (max-width:600px) {
+    #preview-panel {
+        display:block;
+    }
+
+    #preview-panel > div:first-child, #preview-panel > div:last-child {
+        margin-left:0px;
+        margin-right:0px;
+    }
+
+    #preview-panel > div:first-child {
+        margin-bottom:20px;
+    }
+
+}
+
+/* interactive */
+
+#clues {
+	bottom:0;
+    z-index:2;
+    box-sizing:border-box;
+    position:sticky;
+    position: -webkit-sticky;
+	/*border-top:5px solid #38341c;*/
+    max-width:900px;
+    margin:auto;
+	padding-top:5px;
+    display:flex;
+	font-size:14px;
+}
+
+#hidden-field {
+    border:none;
+    background-color:transparent;
+    position:absolute;
+    left:0;
+    top:-100px;
+    width:20px;
+    outline:none;
+    text-align:left;
+    opacity:0;
+    /*pointer-events:none;*/
+    z-index:-10;
+}
+
+#across-box, #down-box {
+    flex:1;
+}
+
+#across-box {
+    margin-right:10px;
+}
+
+#down-box {
+    margin-left:10px;
+}
+
+#clues h5 {
+	font-size:14px;
+	margin-bottom:5px;
+    text-align:center;
+}
+
+#crossword {
+	text-align:center;
+}
+
+#clues ol {
+	overflow:auto;
+	height:calc(25vh);
+	list-style-type:none;
+	padding-top:0;
+}
+
+#clues ol li {
+    line-height:1.2;
+    padding:2px;
+}
+
+#clues li, #clues p {
+	margin-bottom:5px;
+}
+
+#clues li.active {
+	background-color:#006a97;
+    color:#fff;
+}
+
+#stage-2 {
+	border-bottom:none;
+}
+
+.cx g rect {
+    cursor:pointer;
+}
+
+.cx .highlighted rect {
+	fill:#006a97;
+}
+
+.cx svg {
+    max-width:100%;
+    height:auto;
+}
+
+.cx .wrong .cx-a {
+    font-weight:bold;
+    fill:#ab0d0d;
+}
+
+.cx .correct .cx-a {
+    font-weight:bold;
+    fill:#009900;
+}
+
+.cx .active rect {
+	fill:#009adb;
+}
+
+.cx .highlighted .cx-a {
+    fill:#fff;
+}
+
+#clues li {
+    cursor:pointer;
+}
+
+#print-select {
+    max-width:100px;
+}
+
+#clues .correct:before {
+    content:"\2713";
+    display:inline-block;
+    width:10px;
+    font-weight:bold;
+    color:#009900;
+}
+
+#clues .wrong:before {
+    content:"x";
+    display:inline-block;
+    width:10px;
+    font-weight:bold;
+    color:#ab0d0d;
+}
+
+* {box-sizing:border-box}
+/* interactive */
+
+
+.framed h1 {
+    display:none;
+}
+
+#clues {
+    bottom:0;
+    z-index:2;
+    box-sizing:border-box;
+    /*background-color:rgba(255,255,255,.90);*/
+    /*position:sticky;*/
+    /*border-top:5px solid #38341c;*/
+    margin:0 auto;
+    margin-top:5px;
+    display:flex;
+    font-size:14px;
+    touch-action: manipulation;
+    max-width:900px;
+    height:calc(100% - 5px);
+}
+
+.clues-stacked #clues {
+    display:block;
+    height:25vh;
+    overflow:auto;
+}
+
+#across-box, #down-box {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    height:100%;
+}
+
+#across-box {
+    margin-right:10px;
+}
+
+#down li:last-child, #across li:last-child {
+    margin-bottom:40px;
+}
+
+#down-box {
+    margin-left:10px;
+}
+
+.clues-stacked #down-box,
+.clues-stacked #across-box {
+    margin-left:0;
+    margin-right:0;
+    margin-bottom:20px;
+}
+
+#clues h5 {
+    font-size:14px;
+    margin-bottom:5px;
+    text-align:center;
+    cursor:ns-resize;
+}
+
+#crossword {
+    text-align:center;
+    transition-duration: .5s;
+    transition-property:width, height;
+    width:100%;
+    /*margin-top:10px;*/
+}
+
+#clues ol {
+    overflow:auto;
+    /*height:calc(25vh);*/
+    height:100%;
+    list-style-type:none;
+    padding-top:0;
+}
+
+.clues-stacked #clues ol {
+    height:auto;
+}
+
+#clues ol li {
+    line-height:1.2;
+    padding:2px;
+}
+
+#clues li, #clues p {
+    margin-bottom:5px;
+}
+
+#clues li.active {
+    background-color:#006a97;
+    color:#fff;
+}
+
+.cx g rect {
+    cursor:pointer;
+}
+
+.cx .highlighted rect {
+    fill:#006a97;
+}
+
+.cx svg {
+    max-width:100%;
+    height:auto;
+    transform-origin:top left;
+    transition-duration:.5s;
+    transition-property:transform;
+    touch-action: manipulation;
+    /*display:block;*/
+}
+
+#ie-test {
+    font-size:0px;
+}
+
+@media all and (-ms-high-contrast:none){
+    #ie-test {
+        font-size:10px
+    }
+}
+
+.cx .wrong .cx-a {
+    font-weight:bold;
+    fill:#ab0d0d;
+}
+
+.cx .correct .cx-a {
+    font-weight:bold;
+    fill:#009900;
+}
+
+.cx .active rect {
+    fill:#009adb;
+}
+
+.cx .highlighted .cx-a {
+    fill:#fff;
+}
+
+#clues li {
+    cursor:pointer;
+}
+
+#clues .correct:before {
+    content:"\2713";
+    display:inline-block;
+    width:10px;
+    font-weight:bold;
+    color:#009900;
+}
+
+#clues .wrong:before {
+    content:"x";
+    display:inline-block;
+    width:10px;
+    font-weight:bold;
+    color:#ab0d0d;
+}
+
+
+body {
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:14px;
+}
+
+h2 {
+    font-size:30px;
+    font-weight:normal;
+    margin-bottom:10px;
+    line-height:1.3;
+    text-align:center;
+}
+
+input[type="text"], textarea, input[type="password"] {
+    font-size:16px;
+    padding:5px;
+    width:100%;
+    display:block;
+}
+
+
+h5 {
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+/*
+#mini-menu a:visited {
+    color:black;
+}*/
+
+strong {
+    font-weight:bold;
+}
+ol, ul {
+    line-height:normal;
+}
+
+
+.print-icon {
+    font-size:18px;
+    cursor:pointer;
+    /*margin-left:auto;*/
+}
+
+#menu-expander {
+    width: 35px;
+    height: 35px;
+    border-radius: 10%;
+    background-image: url(/static/1658649439/img/bars.svg?6808f67e18d0);
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index:10;
+    /*background-color: #009adb;*/
+    cursor:pointer;
+    user-select:none;
+    background-color:rgba(255,255,255,.8);
+}
+
+#mini-menu.menu-expanded #mini-menu-content {
+    display:flex;
+
+}
+
+#mini-menu {
+    position:absolute;
+    right:5px;
+    bottom:5px;
+    z-index:12;
+    display:flex;
+    border:1px solid transparent;
+    flex-direction:row-reverse;
+    box-shadow:#ccc 0 0 10px 0;
+}
+
+#mini-menu-content {
+    display:none;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    background-color: white;
+
+}
+
+#mini-menu img {
+    width:20px;
+    height:20px;
+    cursor:pointer;
+}
+
+#clear-puzzle {
+    cursor:pointer;
+}
+
+#mini-menu-content > div {
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.mini-menu-proper {
+    position:relative;
+    width:40px;
+}
+
+.mini-menu-proper #mini-menu {
+    top:auto;
+    left:auto;
+    bottom:auto;
+    right:auto;
+    /*flex-direction:column;*/
+}
+
+.mini-menu-proper #mini-menu,
+.mini-menu-proper #mini-menu-content {
+    flex-direction:column;
+    box-shadow:none;
+}
+
+.mini-menu-proper #mini-menu-content > div {
+    margin:5px 0;
+}
+
+.mini-menu-proper #clear-puzzle {
+    font-size:10px;
+}
+
+#mini-menu:hover, #mini-menu.menu-expanded {
+    /*border:1px solid black;*/
+    box-shadow:#ccc 0 0 10px 0;
+}
+
+
+
+#flex-wrapper {
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    /*position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;*/
+}
+
+#puzzle {
+    flex:1;
+    overflow:auto;
+    position:relative;
+}
+
+#toggle-layout {
+    transition:.5s;
+}
+
+#flex-wrapper > div:last-child {
+    /*border:1px solid black;*/
+}
+
+#clues {
+    /*position:static;*/
+    /*background-color:red;*/
+}
+
+#hidden-field {
+    border:none;
+    background-color:transparent;
+    position:absolute;
+    left:0;
+    top:-100px;
+    width:20px;
+    outline:none;
+    text-align:center;
+    opacity:0;
+    /*pointer-events:none;*/
+    z-index:-10;
+}
+
+#stage-2 {
+    border-bottom:none;
+}
+
+#print-select {
+    max-width:100px;
+}
+
+
+@media (orientation: foo) {
+    #flex-wrapper {
+        flex-direction:row;
+    }
+
+    #clues ol {
+        width:auto;
+        /*height:100%;*/
+        height:auto;
+    }
+
+    #across-box, #down-box {
+        /*height:100vh;*/
+        margin-left:0;
+        margin-right:10px;
+        margin-bottom:20px;
+
+    }
+
+    #clues {
+        width:25vw;
+        height:100vh;
+        /*overflow:hidden;*/
+        overflow:auto;
+        display:block;
+    }
+
+}
+
+@media print {
+    html, body {
+        overflow:visible;
+        height:auto;
+    }
+
+    #wrapper {
+        margin-top:0;
+    }
+
+    #header {
+        display:none;
+    }
+
+    .print-hide {
+        display:none;
+    }
+
+    #finish-up, #finish-up2 {
+        display:none;
+    }
+
+    #clues {
+        position:static;
+        height:auto;
+    }
+
+    #clues-inner {
+        border:none;
+    }
+
+    #clues ol {
+        overflow:visible;
+        height:auto;
+    }
+
+    .clues-stacked #clues {
+        overflow:visible;
+        height:auto;
+    }
+
+    #flex-wrapper {
+        display:block;
+        height:auto;
+    }
+
+    #crossword {
+        margin-bottom:20px;
+    }
+
+    .cx .highlighted rect {
+        fill:transparent;
+    }
+
+    .cx .active rect {
+        fill:transparent;
+    }
+
+    .cx .wrong .cx-a {
+        fill:#ab0d0d !important;
+    }
+
+    .cx .correct .cx-a {
+        fill:#009900 !important;
+    }
+
+    #clues {
+        border-top:none;
+        position:static;
+        max-width:none;
+    }
+
+    #clues ol {
+        overflow:visible;
+        height:auto;
+        position:static;
+    }
+
+    #clues li.active {
+        color:inherit;
+        background-color:inherit;
+
+    }
+
+    .promise {
+        display:none;
+    }
+
+    .print-icon {
+        display:none;
+
+    }
+
+    .cx svg {
+        transform:scale(1) !important;
+    }
+
+    #mini-menu {
+        display:none;
+
+    }
+
+    #stage-2 {
+        border:none;
+        padding-top:0;
+    }
+    /*
+    .cx .highlighted .cx-a {
+        fill:inherit;
+    }*/
+
+    #down li:last-child, #across li:last-child {
+        margin-bottom:0;
+
+    }
+
+    #across-box, #down-box {
+        display:block;
+        height:auto;
+    }
+
+    #puzzle {
+        overflow:visible;
+        position:static;
+    }
+}
+        </style>
+
+        <meta name="description" content="Make crossword puzzles, print them out as PDFs, share them, and solve them online with Crossword Labs. It&#x27;s free, fast and easy. No registration required!" />
+        <link rel="icon" href="/static/1658649439/favicon.ico" />
+        <link rel="icon" href="/.well-known/favicon.svg" type="image/svg+xml">
+        <link rel="manifest" href="/.well-known/site.webmanifest">
+        <link rel="apple-touch-icon" href="/.well-known/apple.png">
+
+        <meta property="og:title" content="Free, Online Crossword Puzzle Maker - Crossword Labs" />
+        <meta property="og:description" content="Make crossword puzzles, print them out as PDFs, share them, and solve them online with Crossword Labs. It&#x27;s free, fast and easy. No registration required!" />
+        <meta property="og:site_name" content="CrosswordLabs.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://crosswordlabs.com/" />
+        <meta property="og:image" content="https://crosswordlabs.com/static/1658649439/favicon.svg" />
+        <meta property="og:image:type" content="image/svg+xml" />
+
+
+        <style type="text/css">
+            
+        </style>
+        
+
+        
+</head>
+
+<body>
+
+<div id="wrapper">
+    
+<div id="header">
+    <a href="/"><img style="max-width:100%" src="/static/1658649439/img/logo.gif" alt="Crossword Labs" /></a>
+    <div id="nav" role="navigation">
+        <a  class="active"  href="/" >Make a Crossword</a>
+        <a  href="/browse">Find a Crossword</a>
+        <a  href="/about">About</a>
+        
+            <a  href="/account/login">Login/Sign Up</a>
+        
+    </div>
+</div>
+
+	<div id="content">
+        
+<script>
+
+    var LOGGED_IN = false;
+
+window.DISABLE_TOOLTIP = true;
+
+var JS_PAGE = "home"
+
+</script>
+
+<div id="stage-1">
+    <div class="side-by-side">
+        <div id="wedge" style="" role="complementary">
+            <img src="/static/1658649439/img/tagline.gif" alt="Free, Fast and Easy" id="tagline" />
+            <div id="in-wedge">
+                <p>Crossword Labs is a crossword puzzle maker. It's the simplest and fastest way to build, print, share and solve crossword puzzles online. And it's free to use!</p>
+                <p><strong>No ads, no watermarks, and no registration required.</strong></p>
+                <p>Over <span style="font-size:22px">one million</span> crossword puzzles made!</p>
+                <div id="samples">
+                    <img src="/static/1658649439/img/cw.svg" alt="A little crossword" id="little-crossword" />
+                    <h4>Sample Crosswords</h4>
+                    <ul>
+                        <li><a href="/view/the-planets">The Planets</a></li>
+                        <li><a href="/view/weather">Weather</a></li>
+                        <li><a href="/view/animals">Animals</a></li>
+                    </ul>
+                </div>
+                <div style="border-top:5px dotted white; margin-bottom:20px;"></div>
+                <form method="get" action="/browse" role="search">
+                    <h3>Find a Crossword Puzzle</h3>
+                    <p>Find a ready-made crossword puzzle on any subject:</p>
+                    <div style="display:flex">
+                        <input style="font-size:18px;" type="text" name="q" value="nutrition in plants" />
+                        <button style="font-size:18px">Search</button>
+                    </div>
+                </form>
+                <p style="margin-top:10px">or make your own!</p>
+                <div style="border-top:5px dotted white; margin-top:20px; margin-bottom:10px;"></div>
+                <h3>Features</h3>
+                <ul>
+                    <li>Quick, simple and free to use</li>
+                    <li>Shareable crossword URL</li>
+                    <li>Solve the puzzle online</li>
+                    <li>Works on tablets and phones</li>
+                    <li>Embed your puzzle on your website</li>
+                    <li>Print/export your crossword puzzle to PDF or Microsoft Word</li>
+                    <li>Download your crossword as an image</li>
+                    <li>Export to SVG for full customization</li>
+                </ul>
+            </div>
+        </div>
+        <div role="main">
+            <!--<div class="interesting">
+                <h1>Crossword Puzzle Maker</h1>
+                <p>CrosswordLabs is the simplest way to make crossword puzzles online. You can make a crossword puzzle in seconds! It's 100% free to use and has no ads, or watermarks. No registration is required. </p>
+                <p>Build &#x1f7ca; Print &#x1f7ca; Solve &#x1f7ca;</p>
+                <p>Your puzzle can 
+                    
+                    that allows you to solve puzzles online.</p>
+            </div>-->
+            <form id="build-crossword" method="post" action="">
+                
+                
+
+                <label for="crossword-title">Crossword Puzzle Title</label>
+                <input type="text" name="title" id="id_title">
+
+                <label for="crossword-data">Enter the word, a space and then the clue. One word/clue pair per line. <a href="#" id="example">Need to see an example?</a></label>
+                <textarea name="words" cols="40" rows="10" id="id_words">
+</textarea>
+                <div id="preview-panel">
+                    <div style="flex:1">
+                        
+                            <label for="id_password" style="">
+                                Create a passcode
+                                <!--<input type="text" name="password" id="password" />-->
+                            </label>
+                            <div style="position:relative;">
+                                <input type="password" name="password" id="id_password">
+                                <img style="display:flex; align-items:center; position:absolute; right:5px; top:4px; width:24px" id="show" src="/static/1658649439/img/eye.svg" style="width:24px" />
+                            </div>
+                            <div class="form-help" style="margin-top:5px">This will protect the answer key, and allow you to edit your puzzle. <strong>Don't forget it!</strong> You can't recover it.</div>
+                            <br />
+                        
+                        <label>Privacy Setting</label>
+                        <div id="privacy-settings">
+                            
+                                <div>
+                                    <input type="radio" name="permissions" value="777" id="id_permissions_0" required checked>
+                                    <label for="id_permissions_0">Public <span class="member-hide">(free!)</span><br />
+                                <small>Anyone can find, view, solve and print your puzzle. It will be visible in search engines.</small> </label>
+                                </div>
+                            
+                                <div>
+                                    <input type="radio" name="permissions" value="770" id="id_permissions_1" required>
+                                    <label for="id_permissions_1">Hidden <span class="member-hide">(members only)</span><br />
+                                <small>Only people who have the direct URL will be able to view/print/solve your puzzle. It will be hidden from search engines.</small> </label>
+                                </div>
+                            
+                                <div>
+                                    <input type="radio" name="permissions" value="700" id="id_permissions_2" required>
+                                    <label for="id_permissions_2">Private <span class="member-hide">(members only)</span><br />
+                                <small>Only you can view the puzzle. It cannot be accessed by anyone else, or search engines.</small> </label>
+                                </div>
+                            
+                        </div>
+                    </div>
+                    <div style="flex:1; overflow:hidden;">
+                        <div id="preview-detail">
+                            <div id="square">
+                                <div id="preview-here" class="crossword-frame"></div>
+                            </div>
+                            <h3 id="preview-header"><span role="button" tabindex="0" aria-label="Previous crossword layout" id="seed-left">&#9664;</span>  <span role="button" tabindex="0" aria-label="Next crossword layout" id="seed-right">&#9654;</span></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="hidden" name="legend_json" id="id_legend_json">
+                <div class="button" style="margin-top:20px">
+                    <button type="submit" style="padding:10px">Save &amp; Finish</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
+
+	</div>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>
