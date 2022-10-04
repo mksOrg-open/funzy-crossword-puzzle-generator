@@ -2,9 +2,11 @@ import './App.css'
 import React from 'react'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import HomeScreen from './components/homeScreen';
+import Home from './pages/home';
+import Create from './pages/create';
 import CssBaseline from '@mui/material/CssBaseline';
 import Navbar from './components/common/navbar';
+import { Route,Routes, Link } from "react-router-dom";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -36,7 +38,11 @@ function App () {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Navbar ColorModeContext={ColorModeContext}/>
-        <HomeScreen/>
+        
+        <Routes>
+          <Route exact path='/' element={<Home/>}/>
+          <Route path='/create' element={<Create/>}/>
+        </Routes>
       </ThemeProvider>
     </ColorModeContext.Provider>
   );

@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Funzy Crossword Puzzle",
+  "name": "Funzy Crossword Puzzle Generator",
   "icons": [
     {
       "src": "favicon.ico",
