@@ -30,3 +30,13 @@ who participated in this project.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+## Contributors ✨
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<table>
+  <tr>
+    <td align="center"><a href='https://github.com/akbatra567' title='akbatra567: code, infra, management, security, test, ideas, bug'><img src='https://avatars.githubusercontent.com/u/59093007?v=4' alt='akbatra567' style='width:100px;'/></a></td>
+    <td align="center"><a href='https://github.com/akshitbatra' title='akshitbatra: code, bug'><img src='https://avatars.githubusercontent.com/u/88490050?v=4' alt='akshitbatra' style='width:100px;'/></a></td>
+  </tr>
+</table>
