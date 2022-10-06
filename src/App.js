@@ -38,7 +38,6 @@ function App () {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Navbar ColorModeContext={ColorModeContext}/>
-        
         <Routes>
           <Route exact path='/' element={<Home/>}/>
           <Route path='/create' element={<Create/>}/>
