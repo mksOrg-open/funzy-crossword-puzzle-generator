@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function HomeCard({ title, description, link }) {
   return (
@@ -21,10 +21,10 @@ function HomeCard({ title, description, link }) {
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">
-            <Link to='/create'>Create</Link>
+            <Link to="/create">Create</Link>
           </Button>
           <Button size="small" color="primary">
-            Learn more
+            <Link to="/learn-more">Learn more</Link>
           </Button>
         </CardActions>
       </Card>
