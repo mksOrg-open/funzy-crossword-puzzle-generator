@@ -1,9 +1,10 @@
 import React from "react";
+import Typography from "@mui/material/Typography";
 
 function LearnMore() {
   return (
     <div className="container">
-      <Typography gutterBottom variant="h5" component="div">
+      <Typography variant="h4" component="h4" sx={{ ml: 3 }}>
         Learn More
       </Typography>
     </div>

@@ -7,7 +7,7 @@ import Create from "./pages/create";
 import LearnMore from "./pages/learnMore";
 import CssBaseline from "@mui/material/CssBaseline";
 import Navbar from "./components/common/navbar";
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
