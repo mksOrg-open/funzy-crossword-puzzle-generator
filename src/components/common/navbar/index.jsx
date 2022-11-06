@@ -1,46 +1,51 @@
 import React from "react";
-import "./navbar.css";
-import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
-import { useTheme } from "@mui/material/styles";
-import { Link } from "react-router-dom";
+import AppBar from "../../styledComponents/AppBar";
+import Toolbar from "../../styledComponents/Toolbar";
+import {Link} from "@mui/material";
 
-function Navbar({ ColorModeContext }) {
-  const theme = useTheme();
-  const colorMode = React.useContext(ColorModeContext);
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-        bgcolor: "background.default",
-        color: "text.primary",
-        borderRadius: 1,
-        p: 3,
-      }}
-    >
-      <span>
-        <Link to="/">Funzy Crossword Puzzle</Link>
-      </span>
-      &nbsp;
-      {/* <span>{theme.palette.mode} mode</span> */}
-      <IconButton
-        sx={{ ml: 1 }}
-        onClick={colorMode.toggleColorMode}
-        color="inherit"
-      >
-        {theme.palette.mode === "dark" ? (
-          <Brightness7Icon />
-        ) : (
-          <Brightness4Icon />
-        )}
-      </IconButton>
-    </Box>
-  );
+const rightLink = {
+    fontSize: 16,
+    color: 'common.white',
+    ml: 3,
+};
+
+function Navbar() {
+    return (
+        <AppBar position="fixed">
+            <Toolbar sx={{ justifyContent: 'space-between' }}>
+                <Box sx={{ flex: 1 }} />
+                <Link
+                    variant="h6"
+                    underline="none"
+                    color="inherit"
+                    href="/"
+                    sx={{ fontSize: 24 }}
+                >
+                    {'Funzy Crossword Puzzle'}
+                </Link>
+                <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+                    <Link
+                        variant="h6"
+                        color="inherit"
+                        underline="none"
+                        href=""
+                        sx={rightLink}
+                    >
+                        {'Sign In'}
+                    </Link>
+                    <Link
+                        variant="h6"
+                        underline="none"
+                        href=""
+                        sx={{ ...rightLink, color: 'secondary.main' }}
+                    >
+                        {'Sign Up'}
+                    </Link>
+                </Box>
+            </Toolbar>
+        </AppBar>
+    );
 }
 
 export default Navbar;
